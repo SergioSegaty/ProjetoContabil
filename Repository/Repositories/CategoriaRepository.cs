@@ -11,7 +11,7 @@ using System.Data;
 
 namespace Repository.Repositories
 {
-    class CategoriaRepository : ICategoriaRepository
+    public class CategoriaRepository : ICategoriaRepository
 
     {
         public int Inserir(Categoria categoria)
