@@ -7,7 +7,7 @@ using Model;
 
 namespace Repository.Interfaces
 {
-    interface iCategoriaRepository
+    interface ICategoriaRepository
     {
         int Inserir(Categoria categoria);
 
