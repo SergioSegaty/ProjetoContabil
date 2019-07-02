@@ -105,3 +105,7 @@ CREATE TABLE contas_receber(
 	data_pagamento DATETIME2,
 	valor DECIMAL(8,2)
 );
+
+SELECT * FROM contas_pagar
+
+
