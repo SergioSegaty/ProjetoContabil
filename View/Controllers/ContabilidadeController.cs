@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Model;
+using Repository.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,13 +8,13 @@ using System.Web.Mvc;
 
 namespace View.Controllers
 {
-    public class ContabildiadeController : Controller
+    public class ContabilidadeController : Controller
     {
         private ContabilidadeRepository repository;
 
-        public Contabilidadecontroller()
+        public ContabilidadeController()
         {
-            repositoru = new ContabilidadeRepository();
+            repository = new ContabilidadeRepository();
         }
 
         //GET : Contabilidade 
@@ -44,7 +46,7 @@ namespace View.Controllers
 
         public ActionResult Editar(int id)
         {
-            ContabilidadeController contabilidade = repostiory.ObterPeloId(id);
+            Contabilidade contabilidade = repository.ObterPeloId(id);
             ViewBag.Contabilidade = contabilidade;
             return View();
 
@@ -55,7 +57,7 @@ namespace View.Controllers
             Contabilidade contabilidade = new Contabilidade();
             contabilidade.Id = id;
             contabilidade.Nome = nome;
-            repository.Alterar(categoria);
+            repository.Alterar(contabilidade);
             return RedirectToAction("Index");
         }
     }

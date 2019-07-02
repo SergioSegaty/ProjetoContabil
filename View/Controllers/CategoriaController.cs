@@ -8,6 +8,8 @@ namespace View.Controllers
 {
     public class CategoriaController : Controller
     {
+
+        private CategoriaRepository repositorio;
         // GET: Categoria
         public ActionResult Index()
         {
