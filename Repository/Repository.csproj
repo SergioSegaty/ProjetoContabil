@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase\Conexao.cs" />
-    <Compile Include="Interfaces\iCategoriaRepository.cs" />
+    <Compile Include="Interfaces\ICategoriaRepository.cs" />
     <Compile Include="Interfaces\IComprasRepository.cs" />
     <Compile Include="Interfaces\IContabilidadeRepository.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />
