@@ -19,7 +19,7 @@ namespace View.Controllers
         // GET: Categoria
         public ActionResult Index()
         {
-            List<Categoria> categorias = repositorio.Obtertodos("");
+            List<Categoria> categorias = repositorio.ObterTodos();
             ViewBag.Categorias = categorias;
             return View();
         }
@@ -27,7 +27,7 @@ namespace View.Controllers
         public ActionResult Cadastro()
         {
             CategoriaRepository categoriaRepository = new CategoriaRepository();
-            List<Categoria> categoria = categoriaRepository.ObterTodos();
+            List<Categoria> categorias = categoriaRepository.ObterTodos();
             ViewBag.Categorias = categorias;
             return View();
 
@@ -36,8 +36,8 @@ namespace View.Controllers
         public ActionResult Store(int idCategoria, string nome)
         {
             Categoria categoria = new Categoria();
-            categoria.IdCategoria = idCategoria;
-            categoria.nome = nome;
+            categoria.Id = idCategoria;
+            categoria.Nome = nome;
             repositorio.Inserir(categoria);
             return RedirectToAction("Index");
         }
@@ -63,7 +63,6 @@ namespace View.Controllers
             Categoria categoria = new Categoria();
             categoria.Id = id;
             categoria.Nome = nome;
-            categoria.IdCategoria = idCategoria;
             repositorio.Alterar(categoria);
 
             return RedirectToAction("Index");
