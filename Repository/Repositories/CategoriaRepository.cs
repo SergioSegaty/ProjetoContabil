@@ -11,7 +11,7 @@ using System.Data;
 
 namespace Repository.Repositories
 {
-    class CategoriaRepository : ICategoriaRepository
+    public class CategoriaRepository : ICategoriaRepository
 
     {
         public int Inserir(Categoria categoria)
@@ -19,6 +19,7 @@ namespace Repository.Repositories
             SqlCommand comando = Conexao.AbrirConexao();
             comando.CommandText = @"INSERT INTO categorias
             (nome)
+            OUTPUT INSERTED.ID
             VALUES
             (@NOME)";
 
