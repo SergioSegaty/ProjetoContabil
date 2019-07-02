@@ -19,6 +19,7 @@ namespace Repository.Repositories
             SqlCommand comando = Conexao.AbrirConexao();
             comando.CommandText = @"INSERT INTO categorias
             (nome)
+            OUTPUT INSERTED.ID
             VALUES
             (@NOME)";
 

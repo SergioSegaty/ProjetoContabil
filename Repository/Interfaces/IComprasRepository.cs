@@ -7,17 +7,19 @@ using Model;
 
 namespace Repository.Interfaces
 {
-    interface ICategoriaRepository
+    interface IComprasRepository
     {
-        int Inserir(Categoria categoria);
-
-        bool Alterar(Categoria categoria);
+        int Inserir(Compra compra);
 
         bool Apagar(int id);
 
-        List<Categoria> ObterTodos();
+        bool Alterar(Compra compra);
 
-        Categoria ObterPeloId(int id);
+        List<Compra> ObterTodos();
+
+        Compra ObterPeloId(int id);
+        
+
 
     }
 }

@@ -7,10 +7,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Repository.DataBase;
 
 namespace Repository.Repositories
 {
-    public class ContabilidadeRepository: IContabilidadeRepository
+    public class ContabilidadeRepository : IContabilidadeRepository
     {
         public bool Alterar(Contabilidade contabilidade)
         {
@@ -51,7 +52,7 @@ namespace Repository.Repositories
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
             comando.Connection.Close();
-            if(tabela.Rows.Count == 0)
+            if (tabela.Rows.Count == 0)
             {
                 return null;
             }
@@ -62,15 +63,27 @@ namespace Repository.Repositories
             return contabilidade;
         }
 
-        public List<Contabilidade> ObterTodos();
+        public List<Contabilidade> ObterTodos()
+        {
+            SqlCommand comando = Conexao.AbrirConexao();
+            comando.CommandText = "SELECT * FROM contabilidades";
+            DataTable tabela = new DataTable();
+            tabela.Load(comando.ExecuteReader());
+            comando.Connection.Close();
 
-        SqlCommand comando = Conexao.AbrirConexao();
-        comando.CommandText = "SELECT * FROM contabilidades";
-        DataTable tabela = new DataTable();
-        tabela.Load(comando.ExecuteReader());
-        comando.Connection.Close();
+            List<Contabilidade> contabilidades = new List<Contabilidade>();
+            foreach(DataRow linha in tabela.Rows)
+            {
+                Contabilidade contabilidade = new Contabilidade()
+                {
+                    Id = Convert.ToInt32(linha["id"]),
+                    Nome = linha["nome"].ToString()
+                };
+                contabilidades.Add(contabilidade);
+            }
+            return contabilidades;
 
-
+        }
 
     }
 }
