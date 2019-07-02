@@ -13,5 +13,8 @@ namespace Model
         public decimal Valor;
         public DateTime DataCompra;
 
+        public CartaoCredito CartaoCredito;
+
+
     }
 }

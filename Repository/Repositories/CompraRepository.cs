@@ -11,7 +11,7 @@ using Repository.Interfaces;
 
 namespace Repository.Repositories
 {
-    public class ComprasRepository : IComprasRepository
+    public class CompraRepository : ICompraRepository
     {
         public bool Alterar(Compra compra)
         {
@@ -90,23 +90,34 @@ namespace Repository.Repositories
         public List<Compra> ObterTodos()
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"SELECT * FROM compras";
+            comando.CommandText = @"SELECT 
+            cartoes_credito.id AS 'IdCartaoCredito',
+            cartoes_credito.numero AS 'NumeroCartaoCredito',
+            cartoes_credito.data_vencimento AS 'VencimentoCartao',
+            compras.id AS 'id',
+            compras.valor AS 'valor',
+            compras.data_compra AS 'data_compra' FROM compras
+            INNER JOIN cartoes_credito ON (compras.id_cartao_credito = cartoes_credito.id)";
+
 
             List<Compra> compras = new List<Compra>();
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
 
-            for (int i = 0; i < tabela.Rows.Count; i++)
+            foreach (DataRow linha in tabela.Rows)
             {
-                Compra compra = new Compra();
-                DataRow linha = tabela.Rows[i];
+                Compra compra = new Compra();              
 
                 compra.Id = Convert.ToInt32(linha["id"]);
-                compra.IdCartao = Convert.ToInt32(linha["id_cartao_credito"]);
                 compra.Valor = Convert.ToDecimal(linha["valor"]);
                 compra.DataCompra = Convert.ToDateTime(linha["data_compra"]);
+                compra.IdCartao = Convert.ToInt32(linha["id_cartao_credito"]);
+                compra.CartaoCredito = new CartaoCredito();
+                compra.CartaoCredito.Id = Convert.ToInt32(linha["IdCartaoCredito"]);
+                compra.CartaoCredito.Numero = linha["NumeroCartaoCredito"].ToString();
 
                 compras.Add(compra);
+
 
             }
 
