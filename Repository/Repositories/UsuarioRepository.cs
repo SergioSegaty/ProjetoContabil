@@ -1,5 +1,6 @@
 ﻿using Model;
 using Repository.DataBase;
+using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Repositories
 {
-    public class UsuarioRepository
+    public class UsuarioRepository: IUsuarioRepository
     {
         public bool Alterar(Usuario usuario)
         {
