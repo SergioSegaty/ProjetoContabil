@@ -21,7 +21,7 @@ namespace View.Controllers
         public ActionResult Index()
         {
             List<Contabilidade> contabilidades = repository.ObterTodos();
-            ViewBag.Contabilidadex = contabilidades;
+            ViewBag.Contabilidades = contabilidades;
             return View();
         }
 
