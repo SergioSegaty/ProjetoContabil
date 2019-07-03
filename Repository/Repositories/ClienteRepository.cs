@@ -22,7 +22,7 @@ namespace Repository.Repositories
             id_contabilidade = @ID_CONTABILIDADE
             WHERE id = @ID";
 
-            comando.Parameters.AddWithValue("@ID",cliente.Id);
+            comando.Parameters.AddWithValue("@ID", cliente.Id);
             comando.Parameters.AddWithValue("@NOME", cliente.Nome);
             comando.Parameters.AddWithValue("@CPF", cliente.Cpf);
             comando.Parameters.AddWithValue("@ID_CONTABILIDADE", cliente.IdContabilidade);
@@ -99,6 +99,36 @@ namespace Repository.Repositories
         public List<Cliente> ObterTodos()
         {
             SqlCommand comando = new SqlCommand();
+
+            comando.CommandText = @"SELECT 
+            contabilidades.id AS 'IdContabilidade',
+            contabilidades.nome AS 'NomeContabilidade',
+            clientes.id AS 'id',
+            clientes.nome AS 'nome',
+            clientes.cpf AS 'cpf' FROM clientes
+            INNER JOIN contabilidades ON (clientes.id_contabilidade = contabilidades.id)           
+            ";
+
+            List<Cliente> clientes = new List<Cliente>();
+            DataTable tabela = new DataTable();
+            tabela.Load(comando.ExecuteReader());
+            foreach (DataRow linha in tabela.Rows)
+            {
+                Cliente cliente = new Cliente();
+
+                cliente.Cpf = linha["cpf"].ToString();
+                cliente.Id = Convert.ToInt32(linha["id"]);
+                cliente.Nome = linha["nome"].ToString();
+                cliente.IdContabilidade = Convert.ToInt32(linha["IdContabilidade"]);
+                cliente.Contabilidade = new Contabilidade();
+                cliente.Contabilidade.Id = Convert.ToInt32(linha["IdContabilidade"]);
+                cliente.Contabilidade.Nome = linha["NomeContabilidade"].ToString();
+
+                clientes.Add(cliente);
+            }
+
+            return clientes;
+
 
 
 

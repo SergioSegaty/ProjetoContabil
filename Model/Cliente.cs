@@ -12,5 +12,7 @@ namespace Model
         public int IdContabilidade;
         public string Nome;
         public string Cpf;
+
+        public Contabilidade Contabilidade;
     }
 }

@@ -16,7 +16,7 @@ namespace Repository.Repositories
         public bool Alterar(ContaPagar contaPagar)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = "UPDATE ContaPagar SET id_cliente = @ID_CLIENTE WHERE id =@ID";
+            comando.CommandText = "UPDATE ContaPagar SET id_cliente = @ID_CLIENTE WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID_CLIENTE", contaPagar.IdCliente);
             comando.Parameters.AddWithValue("@ID_CATEGORIA", contaPagar.IdCategoria);
             comando.Parameters.AddWithValue("@NOME", contaPagar.Nome);

@@ -7,7 +7,7 @@ using Model;
 
 namespace Repository.Interfaces
 {
-    interface IComprasRepository
+    interface ICompraRepository
     {
         int Inserir(Compra compra);
 

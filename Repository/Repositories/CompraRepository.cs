@@ -111,7 +111,7 @@ namespace Repository.Repositories
                 compra.Id = Convert.ToInt32(linha["id"]);
                 compra.Valor = Convert.ToDecimal(linha["valor"]);
                 compra.DataCompra = Convert.ToDateTime(linha["data_compra"]);
-                compra.IdCartao = Convert.ToInt32(linha["id_cartao_credito"]);
+                compra.IdCartao = Convert.ToInt32(linha["IdCartaoCredito"]);
                 compra.CartaoCredito = new CartaoCredito();
                 compra.CartaoCredito.Id = Convert.ToInt32(linha["IdCartaoCredito"]);
                 compra.CartaoCredito.Numero = linha["NumeroCartaoCredito"].ToString();
