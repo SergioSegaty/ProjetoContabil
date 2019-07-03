@@ -45,7 +45,8 @@
     <Compile Include="DataBase\Conexao.cs" />
     <Compile Include="Interfaces\ICartaoCreditoRepository.cs" />
     <Compile Include="Interfaces\iCategoriaRepository.cs" />
-    <Compile Include="Interfaces\IComprasRepository.cs" />
+    <Compile Include="Interfaces\IClienteRepository.cs" />
+    <Compile Include="Interfaces\ICompraRepository.cs" />
     <Compile Include="Interfaces\IContabilidadeRepository.cs" />
     <Compile Include="Interfaces\IContaPagarRepository.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />
