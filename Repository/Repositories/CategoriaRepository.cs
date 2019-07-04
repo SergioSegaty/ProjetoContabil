@@ -44,7 +44,7 @@ namespace Repository.Repositories
 
             return quantidade == 1;
 
-            
+
         }
 
         public bool Apagar(int id)
@@ -79,7 +79,7 @@ namespace Repository.Repositories
 
             return categoria;
 
-            
+
         }
 
         public List<Categoria> ObterTodos()
@@ -90,6 +90,10 @@ namespace Repository.Repositories
             List<Categoria> categorias = new List<Categoria>();
 
             DataTable tabela = new DataTable();
+
+            tabela.Load(comando.ExecuteReader());
+            comando.Connection.Close();
+
             for (int i = 0; i < tabela.Rows.Count; i++)
             {
                 DataRow linha = tabela.Rows[i];

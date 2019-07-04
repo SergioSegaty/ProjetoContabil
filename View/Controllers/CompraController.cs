@@ -31,10 +31,10 @@ namespace View.Controllers
             return View();
         }
 
-        public ActionResult Store(int idCompra, int idCartaoCredito, decimal valor, DateTime dataCompra)
+        public ActionResult Store(int idCartaoCredito, decimal valor, DateTime dataCompra)
         {
             Compra compra = new Compra();
-            compra.CartaoCredito.Id = idCartaoCredito;
+            compra.IdCartao = idCartaoCredito;
             compra.Valor = valor;
             compra.DataCompra = dataCompra;
             repositorio.Inserir(compra);
@@ -57,11 +57,11 @@ namespace View.Controllers
             return View();
         }
 
-        public ActionResult Update(int idCompra, int idCartaoCredito, decimal valor, DateTime dataCompra)
+        public ActionResult Update(int id, int idCartaoCredito, decimal valor, DateTime dataCompra)
         {
             Compra compra = new Compra();
-            compra.Id = idCompra;
-            compra.CartaoCredito.Id = idCartaoCredito;
+            compra.Id = id;
+            compra.IdCartao = idCartaoCredito;
             compra.Valor = valor;
             compra.DataCompra = dataCompra;
             repositorio.Alterar(compra);

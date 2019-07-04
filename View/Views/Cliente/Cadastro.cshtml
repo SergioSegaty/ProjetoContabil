@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Cadastro";
+}
+
+<h3 class="text-center mb-2">Novo Cadastro</h3>
+
+<form action="@Url.Action("Store")" method="post">
+    <div class="row">
+        <div class="col-8">
+            <div class="form-group">
+                <label for="campo-nome">Nome do Cliente</label>
+                <input type="text" name="nome" id="campo-nome" class="form-control" />
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8">
+            <div class="form-group">
+                <label for="campo-cpf">Cpf do Cliente</label>
+                <input type="text" name="cpf" id="campo-cpf" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8">
+            <div class=" form-group">
+                <label for="campo-contabilidade">Contabilidade</label>
+                <select id="campo-contabilidade" name="IdContabilidade"
+                        class="form-control">
+
+                    <option disabled="disabled" selected="selected">
+                        Selecione uma Contabilidade
+                    </option>
+
+                    @foreach (Model.Contabilidade contabilidade in ViewBag.Contabilidades)
+                    {
+                        <option value="@contabilidade.Id">@contabilidade.Nome</option>
+                    }
+
+
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8">
+           <button class="btn btn-outline-success float-right">
+               <i class="fa fa-save"></i> Salvar
+           </button>
+        </div>
+    </div>
+
+
+
+</form>

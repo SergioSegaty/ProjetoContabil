@@ -56,6 +56,7 @@ namespace Repository.Repositories
             comando.CommandText = @"INSERT INTO clientes 
             (id_contabilidade, nome, cpf)
             OUTPUT INSERTED.ID
+            VALUES
             (@ID_CONTABILIDADE, @NOME, @CPF)";
 
             comando.Parameters.AddWithValue("@ID_CONTABILIDADE", cliente.IdContabilidade);
@@ -98,7 +99,7 @@ namespace Repository.Repositories
 
         public List<Cliente> ObterTodos()
         {
-            SqlCommand comando = new SqlCommand();
+            SqlCommand comando = Conexao.AbrirConexao();
 
             comando.CommandText = @"SELECT 
             contabilidades.id AS 'IdContabilidade',

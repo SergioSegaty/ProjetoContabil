@@ -103,10 +103,12 @@ namespace Repository.Repositories
             List<Compra> compras = new List<Compra>();
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
+            comando.Connection.Close();
+
 
             foreach (DataRow linha in tabela.Rows)
             {
-                Compra compra = new Compra();              
+                Compra compra = new Compra();
 
                 compra.Id = Convert.ToInt32(linha["id"]);
                 compra.Valor = Convert.ToDecimal(linha["valor"]);

@@ -96,7 +96,7 @@ namespace Repository.Repositories
             contaReceber.Id = Convert.ToInt32(linha["id"]);
             contaReceber.IdCategoria = Convert.ToInt32(linha["id_categoria"]);
             contaReceber.IdCliente = Convert.ToInt32(linha["id_cliente"]);
-            contaReceber.Nome = linha["nome"].ToString():
+            contaReceber.Nome = linha["nome"].ToString();
             contaReceber.DataPagamento = Convert.ToDateTime(linha["data_pagamento"]);
             contaReceber.Valor = Convert.ToDecimal(linha["valor"]);
 

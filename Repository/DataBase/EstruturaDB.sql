@@ -1,11 +1,11 @@
-﻿DROP TABLE IF EXISTS contabilidades;
-DROP TABLE IF EXISTS categorias;
-DROP TABLE IF EXISTS usuarios;
-DROP TABLE IF EXISTS clientes;
-DROP TABLE IF EXISTS cartoes_credito;
-DROP TABLE IF EXISTS compras;
+﻿DROP TABLE IF EXISTS contas_receber;
 DROP TABLE IF EXISTS contas_pagar;
-DROP TABLE IF EXISTS contas_receber;
+DROP TABLE IF EXISTS compras;
+DROP TABLE IF EXISTS cartoes_credito;
+DROP TABLE IF EXISTS clientes;
+DROP TABLE IF EXISTS usuarios;
+DROP TABLE IF EXISTS categorias;
+DROP TABLE IF EXISTS contabilidades;
 
 
 
@@ -107,5 +107,7 @@ CREATE TABLE contas_receber(
 );
 
 SELECT * FROM contas_pagar
+
+SELECT * FROM categorias
 
 
