@@ -14,6 +14,9 @@ namespace Model
         public string Nome;
         public DateTime DataPagamento;
         public decimal Valor;
+
+        public Categoria Categoria;
+        public Cliente Cliente;
         
     }
 }
