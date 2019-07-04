@@ -76,6 +76,7 @@ namespace Repository.Repositories
             DataRow linha = tabela.Rows[0];
             categoria.Nome = linha["nome"].ToString();
             categoria.Id = Convert.ToInt32(linha["id"]);
+            
 
             return categoria;
 
