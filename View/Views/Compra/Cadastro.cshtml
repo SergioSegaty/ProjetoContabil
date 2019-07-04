@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Cadastro";
+}
+
+<h3>Cadastro de Compra</h3>
+
+<form action="@Url.Action("Store")" method="POST">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-cartaoCredito">Cartão de Crédito</label>
+                <input class="form-control" type="text" name="cartaoCredito" id="campo-cartaoCredito" />
+
+                <label for="campo-valor">Valor da Compra</label>
+                <input class="form-control" type="text" name="valor" id="campo-valor" />
+
+                <label for="campo-dataCompra">Data da Compra</label>
+                <input class="form-control" type="text" name="dataCompra" id="campo-dataCompra" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button class="btn-success float-right" type="submit">
+                <i class="fas fa-save"></i> Salvar
+            </button>
+        </div>
+    </div>
+
+</form>
+
