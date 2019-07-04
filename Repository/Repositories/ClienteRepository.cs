@@ -99,7 +99,7 @@ namespace Repository.Repositories
 
         public List<Cliente> ObterTodos()
         {
-            SqlCommand comando = new SqlCommand();
+            SqlCommand comando = Conexao.AbrirConexao();
 
             comando.CommandText = @"SELECT 
             contabilidades.id AS 'IdContabilidade',
