@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h3 class="text-center m-2">Editar Usuario</h3>
+
+<form class="form-group" action="@Url.Action("Update")" method="post">
+    <div class="row">
+        <div class="col-12">
+
+            <label for="campo-login">Login</label>
+            <input type="text" name="login" id="campo-login" class="form-control"
+                   value="@ViewBag.Usuario.Login" />
+
+            <label for="campo-senha">Senha</label>
+            <input type="text" name="senha" id="campo-senha" class="form-control"
+                   value="@ViewBag.Usuario.Senha" />
+
+            <label for="campo-data-nascimento">Data de Nascimento</label>
+            <input type="date" name="dataNascimento" id="campo-data-nascimento" class="form-control"
+                   value="@ViewBag.Usuario.DataNascimento" />
+
+            <input type="hidden" name="id" value="@ViewBag.Usuario.Id" />
+
+            <label for="campo-contabilidade">Contalibidade</label>
+            <select id="campo-contabilidade" name="IdContabilidade" class="form-control">
+                @foreach (Model.Contabilidade contabilidade in ViewBag.Contabilidades)
+                {
+                    <option value="@contabilidade.Id">@contabilidade.Nome</option>
+                    if (ViewBag.Usuario.IdContabilidade == contabilidade.Id)
+                    {
+                        <option value="@contabilidade.Id" selected="selected">@contabilidade.Nome</option>
+                    }
+
+                }
+
+            </select>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-outline-success float-right">Salvar</button>
+        </div>
+    </div>
+</form>
+
+

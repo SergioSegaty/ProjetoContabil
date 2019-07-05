@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3 class="text-center m-2">Tabela de Usuarios</h3>
+
+
+
+
+<div class="row">
+    <div class="col-12 m-2">
+        <a href="@Url.Action("Cadastro")" class="btn btn-outline-primary float-right">
+            Novo Usuario
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-borderless table-light table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Código</th>
+                    <th>Login</th>
+                    <th>Data de Nascimento</th>
+                    <th>Contabilidade</th>
+                    <th>Ação</th>
+
+                </tr>
+            </thead>
+
+            @foreach (Model.Usuario usuario in ViewBag.Usuarios)
+            {
+                <tbody>
+                    <tr>
+                        <th>@usuario.Id</th>
+                        <th>@usuario.Login</th>
+                        <th>@usuario.DataNascimento</th>
+                        <th>@usuario.Contabilidade.Nome</th>
+                        <th>
+                            <a href="@Url.Action("Editar"), new { id = usuario.Id }" class="btn btn-outline-primary"><i class="fas fa-pen"></i> Editar</a>
+                            <a href="@Url.Action("Deletar"), new { id = usuario.Id }" class="btn btn-outline-primary"><i class="fas fa-save"></i> Deletar</a>
+                        </th>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</div>
+
