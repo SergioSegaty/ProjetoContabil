@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Repositories
 {
-    public class UsuarioRepository: IUsuarioRepository
+    public class UsuarioRepository : IUsuarioRepository
     {
         public bool Alterar(Usuario usuario)
         {
@@ -82,14 +82,14 @@ namespace Repository.Repositories
             List<Usuario> usuarios = new List<Usuario>();
             foreach (DataRow linha in tabela.Rows)
             {
-                Usuario usuario = new Usuario()
-                {
-                    Login = linha["login"].ToString(),
-                    Senha = linha["senha"].ToString(),
-                    DataNascimento = Convert.ToDateTime(linha["data_nascimento"]),
-                    IdContabilidade = Convert.ToInt32(linha["id_contabilidade"]),
-                    Id = Convert.ToInt32(linha["id"])
-                };
+                Usuario usuario = new Usuario();
+
+                usuario.Login = linha["login"].ToString();
+                usuario.Senha = linha["senha"].ToString();
+                usuario.DataNascimento = Convert.ToDateTime(linha["data_nascimento"]);
+                usuario.IdContabilidade = Convert.ToInt32(linha["id_contabilidade"]);
+                usuario.Id = Convert.ToInt32(linha["id"]);
+
                 usuarios.Add(usuario);
             }
             return usuarios;

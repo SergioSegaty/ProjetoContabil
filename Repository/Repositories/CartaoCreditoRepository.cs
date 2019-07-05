@@ -82,14 +82,13 @@ namespace Repository.Repositories
             List<CartaoCredito> cartaoCreditos = new List<CartaoCredito>();
             foreach (DataRow linha in tabela.Rows)
             {
-                CartaoCredito cartaoCredito = new CartaoCredito()
-                {
-                    IdCliente = Convert.ToInt32(linha["id_cliente"]),
-                    Numero = linha["numero"].ToString(),
-                    DataVencimento = Convert.ToDateTime(linha["data_vencimento"]),
-                    Cvv = linha["cvv"].ToString(),
-                    Id = Convert.ToInt32(linha["id"])
-                };
+                CartaoCredito cartaoCredito = new CartaoCredito();
+                cartaoCredito.IdCliente = Convert.ToInt32(linha["id_cliente"]);
+                cartaoCredito.Numero = linha["numero"].ToString();
+                cartaoCredito.DataVencimento = Convert.ToDateTime(linha["data_vencimento"]);
+                cartaoCredito.Cvv = linha["cvv"].ToString();
+                cartaoCredito.Id = Convert.ToInt32(linha["id"]);
+
                 cartaoCreditos.Add(cartaoCredito);
             }
             return cartaoCreditos;

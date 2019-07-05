@@ -117,8 +117,6 @@ namespace Repository.Repositories
                 compra.CartaoCredito.Numero = linha["NumeroCartaoCredito"].ToString();
 
                 compras.Add(compra);
-
-
             }
 
             return compras;
