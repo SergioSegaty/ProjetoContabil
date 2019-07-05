@@ -74,11 +74,11 @@ namespace Repository.Repositories
             List<Contabilidade> contabilidades = new List<Contabilidade>();
             foreach(DataRow linha in tabela.Rows)
             {
-                Contabilidade contabilidade = new Contabilidade()
-                {
-                    Id = Convert.ToInt32(linha["id"]),
-                    Nome = linha["nome"].ToString()
-                };
+                Contabilidade contabilidade = new Contabilidade();
+
+                contabilidade.Id = Convert.ToInt32(linha["id"]);
+                contabilidade.Nome = linha["nome"].ToString();
+                
                 contabilidades.Add(contabilidade);
             }
             return contabilidades;

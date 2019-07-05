@@ -109,13 +109,13 @@ namespace Repository.Repositories
             comando.CommandText = @"SELECT 
             clientes.id AS 'IdCliente',
             clientes.nome AS 'NomeCliente',
-            clientes.CPF AS 'CpfCliente',
+            clientes.cpf AS 'CpfCliente',
             categorias.id AS 'IdCategoria',
-            categorias.nome AS 'NomeCategoria'
+            categorias.nome AS 'NomeCategoria',
             contas_receber.id AS 'id',
             contas_receber.nome AS 'nome',
             contas_receber.data_pagamento AS 'data_pagamento',
-            contas_receber.valor AS 'valor',
+            contas_receber.valor AS 'valor' FROM  contas_receber
             INNER JOIN clientes ON (contas_receber.id_cliente = clientes.id)
             INNER JOIN categorias ON (contas_receber.id_categoria = categorias.id)
             ";
@@ -123,6 +123,7 @@ namespace Repository.Repositories
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
             List<ContaReceber> listaDeContas = new List<ContaReceber>();
+            comando.Connection.Close();
 
             foreach (DataRow linha in tabela.Rows)
             {
