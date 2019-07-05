@@ -117,8 +117,7 @@ namespace Repository.Repositories
             contas_receber.data_pagamento AS 'data_pagamento',
             contas_receber.valor AS 'valor' FROM  contas_receber
             INNER JOIN clientes ON (contas_receber.id_cliente = clientes.id)
-            INNER JOIN categorias ON (contas_receber.id_categoria = categorias.id)
-            ";
+            INNER JOIN categorias ON (contas_receber.id_categoria = categorias.id)";
 
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());

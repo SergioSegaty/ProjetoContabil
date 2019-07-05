@@ -74,7 +74,16 @@ namespace Repository.Repositories
         public List<Usuario> ObterTodos()
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = "SELECT * FROM usuarios";
+            comando.CommandText = @"SELECT 
+            contabilidade.id AS'Id',
+            contabilidade.nome AS 'Nome',
+            usuarios.id AS 'Id',
+            usuarios.login AS 'Login',
+            usuarios.senha AS 'Senha',
+            usuarios.data_nascimento AS 'DataNascimento',
+            usuarios.id_contabilidade AS 'IdContabilidade',FROM usuarios
+            INNER JOIN contabilidade ON (usuarios.id_contabilidade = contabilidade.id)";
+
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
             comando.Connection.Close();
@@ -89,6 +98,10 @@ namespace Repository.Repositories
                 usuario.DataNascimento = Convert.ToDateTime(linha["data_nascimento"]);
                 usuario.IdContabilidade = Convert.ToInt32(linha["id_contabilidade"]);
                 usuario.Id = Convert.ToInt32(linha["id"]);
+
+                usuario.Contabilidade = new Contabilidade();
+                usuario.Contabilidade.Id = Convert.ToInt32(linha["id"]);
+                usuario.Contabilidade.Nome = linha["nome"].ToString();
 
                 usuarios.Add(usuario);
             }
