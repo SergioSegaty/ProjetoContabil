@@ -74,16 +74,15 @@ namespace Repository.Repositories
         public List<Usuario> ObterTodos()
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"SELECT 
-            contabilidade.id AS'Id',
-            contabilidade.nome AS 'Nome',
-            usuarios.id AS 'Id',
-            usuarios.login AS 'Login',
-            usuarios.senha AS 'Senha',
-            usuarios.data_nascimento AS 'DataNascimento',
-            usuarios.id_contabilidade AS 'IdContabilidade',FROM usuarios
-            INNER JOIN contabilidade ON (usuarios.id_contabilidade = contabilidade.id)";
-
+            comando.CommandText = @"SELECT
+            contabilidades.id AS 'IdContabilidade',
+            contabilidades.nome AS 'NomeContabilidade',
+            usuarios.id AS 'id',
+            usuarios.login AS 'login',
+            usuarios.senha AS 'senha',
+            usuarios.data_nascimento AS 'data_nascimento' FROM usuarios
+            INNER JOIN contabilidades ON (usuarios.id_contabilidade = contabilidades.id)
+            ";
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
             comando.Connection.Close();
@@ -92,17 +91,16 @@ namespace Repository.Repositories
             foreach (DataRow linha in tabela.Rows)
             {
                 Usuario usuario = new Usuario();
-
                 usuario.Login = linha["login"].ToString();
                 usuario.Senha = linha["senha"].ToString();
                 usuario.DataNascimento = Convert.ToDateTime(linha["data_nascimento"]);
-                usuario.IdContabilidade = Convert.ToInt32(linha["id_contabilidade"]);
+                usuario.IdContabilidade = Convert.ToInt32(linha["IdContabilidade"]);
+
                 usuario.Id = Convert.ToInt32(linha["id"]);
 
                 usuario.Contabilidade = new Contabilidade();
-                usuario.Contabilidade.Id = Convert.ToInt32(linha["id"]);
-                usuario.Contabilidade.Nome = linha["nome"].ToString();
-
+                usuario.Contabilidade.Nome = linha["NomeContabilidade"].ToString();
+                usuario.Contabilidade.Id = Convert.ToInt32(linha["IdContabilidade"]);
                 usuarios.Add(usuario);
             }
             return usuarios;
