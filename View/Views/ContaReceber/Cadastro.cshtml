@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Cadastro";
+}
+
+<h3 class="text-center m-3">Novo Cadastro</h3>
+
+
+<form class="@Url.Action("Store")" method="post" class="form-group">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-nome">Nome do Cliente</label>
+                <select id="campo-nome" name="IdCliente" class="form-control">
+
+                    <option disabled="disabled" selected="selected">
+                        Selecione o nome do cliente
+                    </option>
+
+                    @foreach (Model.Cliente cliente in ViewBag.Clientes)
+                    {
+                        <option value="@cliente.Id">@cliente.Nome</option>
+                    }
+
+
+
+                </select>
+            </div>
+        </div>
+    </div>
+
+</form>
