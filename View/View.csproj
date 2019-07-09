@@ -236,6 +236,10 @@
     <Content Include="Views\Compra\Index.cshtml" />
     <Content Include="Views\Compra\Cadastro.cshtml" />
     <Content Include="Views\Compra\Editar.cshtml" />
+    <Content Include="Views\CartaoCredito\Cadastro.cshtml" />
+    <Content Include="Views\CartaoCredito\Index.cshtml" />
+    <Content Include="Views\CartaoCredito\Editar.cshtml" />
+    <Content Include="Views\ContaReceber\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -245,7 +249,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Views\ContaReceber\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
