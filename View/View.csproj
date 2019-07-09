@@ -192,6 +192,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\ContabilidadeController.cs" />
+    <Compile Include="Controllers\ContaReceberController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -229,6 +230,10 @@
     <Content Include="Views\Compra\Index.cshtml" />
     <Content Include="Views\Compra\Cadastro.cshtml" />
     <Content Include="Views\Compra\Editar.cshtml" />
+    <Content Include="Views\CartaoCredito\Cadastro.cshtml" />
+    <Content Include="Views\CartaoCredito\Index.cshtml" />
+    <Content Include="Views\CartaoCredito\Editar.cshtml" />
+    <Content Include="Views\ContaReceber\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -31,6 +31,9 @@ namespace View.Controllers
             CartaoCreditoRepository cartaoCreditoRepository = new CartaoCreditoRepository();
             List<CartaoCredito> cartoes_credito = cartaoCreditoRepository.ObterTodos();
             ViewBag.cartoes_credito = cartoes_credito;
+
+            ClienteRepository clienteRepository = new ClienteRepository();
+            ViewBag.Clientes = clienteRepository.ObterTodos();
             return View();
         }
 
@@ -52,9 +55,9 @@ namespace View.Controllers
         {
             CartaoCredito cartaoCredito = repositorio.ObterPeloId(id);
             ViewBag.CartaoCredito = cartaoCredito;
-            CartaoCreditoRepository cartaoCreditoRepository = new CartaoCreditoRepository();
-            List<CartaoCredito> cartaoCreditos = cartaoCreditoRepository.ObterTodos();
-            ViewBag.cartaoCreditos = cartaoCreditos;
+            ClienteRepository clienteRepository = new ClienteRepository();
+            List<Cliente> clientes = clienteRepository.ObterTodos();
+            ViewBag.Clientes = clientes;
             return View();
         }
 

@@ -5,14 +5,25 @@
 
 <h3 class="text-center m-3">Novo Cadastro</h3>
 
-<form action="@Url.Action("Store")" method="post" class="form-group m-5">
+<form action="@Url.Action("Store")" method="post" class="form-group">
+
     <div class="row">
         <div class="col-12">
             <div class="form-group">
                 <label for="campo-nome">Nome do Cliente</label>
-                <input type="text" name="nome" id="campo-nome" class="form-control" />
-            </div>
+                <select id="campo-nome" name="IdCliente" class="form-control">
 
+                    <option disabled="disabled" selected="selected">
+                        Selecione o nome do cliente
+                    </option>
+
+                    @foreach (Model.Cliente cliente in ViewBag.Clientes)
+                    {
+                        <option value="@cliente.Id">@cliente.Nome</option>
+                    }
+
+                </select>
+            </div>
         </div>
     </div>
 
@@ -20,20 +31,23 @@
         <div class="col-12">
             <div class="form-group">
                 <label for="campo-numero">Número do Cartão</label>
-                <input type="text" name="numero-cartao" id="campo-numero" class="form-control" />
+                <input type="text" name="numero-cartao" id="campo-numero" placeholder="Digite o número do cartão de crédito" class="form-control" />
             </div>
         </div>
     </div>
 
-<div class="row">
-    <div class="col-6">
-        <label for="campo-data-vencimento">Data de Vencimento</label>
-        <input type="date" id="campo-data-vencimento" name="dataVencimento" class="form-control" />
+    <div class="row">
+        <div class="col-6">
+            <label for="campo-data-vencimento">Data de Vencimento</label>
+            <input type="date" id="campo-data-vencimento" name="dataVencimento" class="form-control" />
+        </div>
 
 
     </div>
-
-</div>
-
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-outline-success float-right" type="submit">Salvar</button>
+        </div>
+    </div>
 </form>
 
