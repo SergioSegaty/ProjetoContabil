@@ -9,7 +9,7 @@
 
 
 <div class="row">
-    <div class="col-12 m-2">
+    <div class="col-12 mt-2 mb-2">
         <a href="@Url.Action("Cadastro")" class="btn btn-outline-primary float-right">
             Novo Usuario
         </a>
@@ -39,8 +39,8 @@
                         <th>@usuario.DataNascimento</th>
                         <th>@usuario.Contabilidade.Nome</th>
                         <th>
-                            <a href="@Url.Action("Editar"), new { id = usuario.Id }" class="btn btn-outline-primary"><i class="fas fa-pen"></i> Editar</a>
-                            <a href="@Url.Action("Deletar"), new { id = usuario.Id }" class="btn btn-outline-primary"><i class="fas fa-save"></i> Deletar</a>
+                            <a href="@Url.Action("Editar"), new { id = usuario.Id }" class="btn btn-outline-primary"><i class="fa fa-pen"></i> Editar</a>
+                            <a href="@Url.Action("Deletar"), new { id = usuario.Id }" class="btn btn-outline-danger"><i class="fas fa-save"></i> Deletar</a>
                         </th>
                     </tr>
                 </tbody>

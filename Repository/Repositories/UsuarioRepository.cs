@@ -40,8 +40,16 @@ namespace Repository.Repositories
         public int Inserir(Usuario usuario)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = "INSERT INTO usuarios (login) OUTPUT INSERTED.ID VALUES (@LOGIN)";
+            comando.CommandText = @"INSERT INTO usuarios 
+            (login, senha, data_nascimento, id_contabilidade)
+            OUTPUT INSERTED.ID VALUES 
+            (@LOGIN, @SENHA, @DATA_NASCIMENTO, @ID_CONTABILIDADE)";
+
             comando.Parameters.AddWithValue("@LOGIN", usuario.Login);
+            comando.Parameters.AddWithValue("@SENHA", usuario.Senha);
+            comando.Parameters.AddWithValue("@DATA_NASCIMENTO", usuario.DataNascimento);
+            comando.Parameters.AddWithValue("@ID_CONTABILIDADE", usuario.IdContabilidade);
+
             int id = Convert.ToInt32(comando.ExecuteScalar());
             comando.Connection.Close();
             return id;

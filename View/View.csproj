@@ -228,12 +228,6 @@
     <Content Include="Views\Categoria\Editar.cshtml" />
     <Content Include="Views\Compra\Index.cshtml" />
     <Content Include="Views\Compra\Cadastro.cshtml" />
-    <Content Include="Views\Categoria\Cadastro.cshtml" />
-    <Content Include="Views\Categoria\Editar.cshtml" />
-    <Content Include="Views\Contabilidade\Cadastro.cshtml" />
-    <Content Include="Views\Contabilidade\Editar.cshtml" />
-    <Content Include="Views\Compra\Index.cshtml" />
-    <Content Include="Views\Compra\Cadastro.cshtml" />
     <Content Include="Views\Compra\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
