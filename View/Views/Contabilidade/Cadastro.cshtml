@@ -3,28 +3,22 @@
     ViewBag.Title = "Cadastro";
 }
 
-<h3>Cadastro de Contabilidades</h3>
+<h3 class="text-center m-2">Cadastro de Contabilidade</h3>
 
-<form action="@Url.Action("Store")" method="POST">
+<form action="@Url.Action("Store")" method="post" class="form-group">
+
     <div class="row">
         <div class="col-12">
-            <div class="form-group">
-                <label for="campo-nome">Nome</label>
-                <input class="form-control" type="text"
-                       name="nome" id="campo-nome" />
-            </div>
+            <label for="campo-nome">Nome</label>
+            <input type="text" id="campo-nome" name="nome" placeholder="Digite o nome" class="form-control" />
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
-            <button class="btn btn-success float-right" type="submit">
-                <i class="fas fa-save"></i> Salvar
-            </button>
+            <button class="btn btn-outline-success float-right mt-1">Salvar</button>
         </div>
     </div>
-
-
-
 
 </form>
+

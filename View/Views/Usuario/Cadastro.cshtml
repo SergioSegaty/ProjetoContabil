@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Cadastro";
+}
+
+<h3>Cadastro de Usuarios</h3>
+
+
+<form action="@Url.Action("STORE")" method="post" class="form-group">
+    <div class="row">
+        <div class="col-8">
+            <label for="campo-login">Login</label>
+            <input type="text" placeholder="Digite seu login" class="form-control" name="login"
+                   id="campo-login"/>
+
+            <label for="campo-senha">Senha</label>
+            <input type="password" placeholder="Digite sua Senha" class="form-control" name="senha"
+                   id="campo-senha"/>
+
+            <label for="campo-data-nascimento">Data de Nascimento</label>
+            <input type="date" name="dataNascimento" class="form-control" id="campo-data-nascimento" />
+
+            <label for="campo-contabilidade">Contabilidades</label>
+            <select id=" campo-contabilidade" class="form-control" name="IdContabilidade">
+                <option selected="selected" disabled="disabled">Seleciona uma Opção</option>
+
+                @foreach (Model.Contabilidade contabilidade in ViewBag.Contabilidades)
+                {
+                    <option value="@contabilidade.Id">@contabilidade.Nome</option>
+                }
+            </select>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-outline-success float-right" type="submit"></button>
+        </div>
+    </div>
+</form>

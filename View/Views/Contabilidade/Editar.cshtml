@@ -3,24 +3,22 @@
     ViewBag.Title = "Editar";
 }
 
-<h3>Editar</h3>
+<h3 class="text-center m-1">Editar</h3>
 
-<form action="@Url.Action("Update")" method="POST">
-    <input type="hidden" name="id" value="@ViewBag.Contabilidade.Id" />
+<form action="@Url.Action("Update")" method="post">
     <div class="row">
         <div class="col-12">
-            <div class="form-group">
-                <label for="campo-nome">Nome</label>
-                <input type="text" name="nome" class="form-control" id="campo-nome" value="@ViewBag.Contabilidade.Nome" />
-            </div>
+            <label for="campo-nome">Nome</label>
+            <input type="text" name="nome" id="campo-nome" class="form-control"
+                   value="@ViewBag.Contabilidade.Nome"/>
+            <input type="hidden" name="id" value="@ViewBag.Contabilidade.Id"/>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
-            <button type="submit" class="btn btn-success float-right">
-                <i class="fas fa-save"></i> Salvar
-            </button>
+            <button class="btn btn-outline-success m-1 float-right" type="submit">
+            <i class="fas fa-save"></i> Salvar</button>
         </div>
     </div>
 

@@ -14,5 +14,7 @@ namespace Model
         public DateTime DataVencimento;
         public string Cvv;
 
+        public Cliente Cliente;
+
     }
 }

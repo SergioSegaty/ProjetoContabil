@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Cadastro";
+}
+
+<h3 class="text-center m-3">Novo Cadastro</h3>
+
+<form action="@Url.Action("Store")" method="post" class="form-group m-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-nome">Nome do Cliente</label>
+                <input type="text" name="nome" id="campo-nome" class="form-control" />
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-numero">Número do Cartão</label>
+                <input type="text" name="numero-cartao" id="campo-numero" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+<div class="row">
+    <div class="col-6">
+        <label for="campo-data-vencimento">Data de Vencimento</label>
+        <input type="date" id="campo-data-vencimento" name="dataVencimento" class="form-control" />
+
+
+    </div>
+
+</div>
+
+</form>
+

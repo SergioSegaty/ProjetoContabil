@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Repositories
 {
-    public class ContaPagarRepository: IContaPagarRepository
+    public class ContaPagarRepository : IContaPagarRepository
     {
         public bool Alterar(ContaPagar contaPagar)
         {
@@ -80,7 +80,53 @@ namespace Repository.Repositories
 
         public List<ContaPagar> ObterTodos()
         {
-            throw new NotImplementedException();
+            SqlCommand comando = Conexao.AbrirConexao();
+            comando.CommandText = @"SELECT
+            clientes.id AS 'IdCliente',
+            clientes.nome AS 'NomeCliente',
+            clientes.cpf AS 'CpfCliente',
+            categorias.id AS 'IdCategoria',
+            categorias.nome AS 'NomeCategoria',
+            contas_pagar.id AS 'id',
+            contas_pagar.nome AS 'nome',
+            contas_pagar.data_vencimento AS 'data_vencimento',
+            contas_pagar.data_pagamento AS 'data_pagamento',
+            contas_pagar.valor AS 'valor' FROM contas_pagar
+            INNER JOIN clientes ON (contas_pagar.id_cliente = clientes.id)
+            INNER JOIN categorias ON (contas_pagar.id_categoria = categorias.id)";
+
+            DataTable tabela = new DataTable();
+            tabela.Load(comando.ExecuteReader());
+            List<ContaPagar> contasPagar = new List<ContaPagar>();
+            comando.Connection.Close();
+
+            foreach (DataRow linha in tabela.Rows)
+            {
+                ContaPagar contaPagar = new ContaPagar();
+
+                contaPagar.Id = Convert.ToInt32(linha["id"]);
+                contaPagar.IdCliente = Convert.ToInt32(linha["idCliente"]);
+                contaPagar.IdCategoria = Convert.ToInt32(linha["idCategoria"]);
+                contaPagar.Nome = linha["nome"].ToString();
+                contaPagar.DataVencimento = Convert.ToDateTime(linha["data_vencimento"]);
+                contaPagar.DataPagamento = Convert.ToDateTime(linha["data_pagamento"]);
+                contaPagar.Valor = Convert.ToDecimal(linha["valor"]);
+
+                contaPagar.Categoria = new Categoria();
+                contaPagar.Cliente = new Cliente();
+
+                contaPagar.Categoria.Nome = linha["NomeCategoria"].ToString();
+                contaPagar.Categoria.Id = Convert.ToInt32(linha["idCategoria"]);
+
+                contaPagar.Cliente.Id = Convert.ToInt32(linha["IdCliente"]);
+                contaPagar.Cliente.Nome = linha["NomeCliente"].ToString();
+                contaPagar.Cliente.Cpf = linha["CpfCliente"].ToString();
+
+                contasPagar.Add(contaPagar);
+            }
+
+            return contasPagar;
         }
     }
 }
+
