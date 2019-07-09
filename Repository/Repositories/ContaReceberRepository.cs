@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Repositories
 {
-    class ContaReceberRepository : IContaReceberRepository
+    public class ContaReceberRepository : IContaReceberRepository
 
     {
         public bool Alterar(ContaReceber contaReceber)

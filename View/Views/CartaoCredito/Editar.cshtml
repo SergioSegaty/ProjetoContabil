@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h3 class="text-center m-1">Editar</h3>
+
+<form action="@Url.Action("Update")" method="post">
+    <div class="row">
+        <div class="col-12">
+
+            <label for="campo-numero"></label>
+            <input type="text" name="numero" id="campo-numero" class="form-control"
+                   value="@ViewBag.CartaoCredito.Numero"/>
+
+            <label for="campo-data-vencimento"></label>
+            <input type="date" name="dataVencimento" id="campo-data-vencimento" class="form-control"
+                    value="@ViewBag.CartaoCredito.DataVencimento"/>
+
+            <label for="campo-cvv"></label>
+            <input type="text" name="cvv" id="campo-cvv" class="form-control"
+                    value="@ViewBag.CartaoCredito.Cvv"/>
+
+            <input typef="hidden" name="id" value="@ViewBag.CartaoCredito.Id"/>
+
+
+            
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-outline-success m-1 float-right" type="submit">
+                <i class="fas fa-save"></i>Salvar</button> 
+        </div>
+    </div>
+</form>
+
