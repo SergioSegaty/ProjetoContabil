@@ -28,6 +28,15 @@ namespace View.Controllers
 
         public ActionResult Cadastro()
         {
+            ContaReceberRepository contaReceberRepository = new ContaReceberRepository();
+            ViewBag.ContaReceber = contaReceberRepository.ObterTodos();
+
+            ClienteRepository clienteRepository = new ClienteRepository();
+            ViewBag.Cliente = clienteRepository.ObterTodos();
+
+            CategoriaRepository categoriaRepository = new CategoriaRepository();
+            ViewBag.Categoria = categoriaRepository.ObterTodos();
+
             return View();
         }
 
@@ -49,6 +58,13 @@ namespace View.Controllers
         {
             ContaReceber contaReceber = repositorio.ObterPeloId(id);
             ViewBag.ContaReceber = contaReceber;
+
+            ClienteRepository clienteRepository = new ClienteRepository();
+            ViewBag.Cliente = clienteRepository.ObterTodos();
+
+            CategoriaRepository categoriaRepository = new CategoriaRepository();
+            ViewBag.Categoria = categoriaRepository.ObterTodos();
+
             return View();
         }
 
@@ -58,6 +74,7 @@ namespace View.Controllers
             contaReceber.Id = id;
             contaReceber.Nome = nome;
             repositorio.Alterar(contaReceber);
+
             return RedirectToAction("Index");
         }
     }
