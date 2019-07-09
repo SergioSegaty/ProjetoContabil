@@ -3,30 +3,35 @@
     ViewBag.Title = "Cadastro";
 }
 
-<h3>Cadastro de Compra</h3>
+<h3 class="text-center m-3">Nova Compra</h3>
 
-<form action="@Url.Action("Store")" method="POST">
+
+<form action="@Url.Action("Store")" method="post">
+
+
     <div class="row">
         <div class="col-12">
-            <div class="form-group">
-                <label for="campo-cartaoCredito">Cartão de Crédito</label>
-                <input class="form-control" type="text" name="IdCartaoCredito" id="campo-cartaoCredito" />
+            <label for="campo-valor">Valor da Compra</label>
+            <input type="text" id="campo-valor" name="valor" class="form-control" />
 
-                <label for="campo-valor">Valor da Compra</label>
-                <input class="form-control" type="text" name="valor" id="campo-valor" />
+            <label>Cartão de Crédito</label>
+            <select class="form-control" name="idCartaoCredito">
+                <option selected="selected" disabled="disabled">Seleciona uma Opção</option>
+                @foreach (Model.CartaoCredito cartaoCredito in ViewBag.Cartoes)
+                {
+                   <option value="@cartaoCredito.Id">@cartaoCredito.Numero</option>
+                }
+            </select>
 
-                <label for="campo-dataCompra">Data da Compra</label>
-                <input class="form-control" type="text" name="dataCompra" id="campo-dataCompra" />
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <button class="btn-success float-right" type="submit">
-                <i class="fas fa-save"></i> Salvar
-            </button>
+            <label for="campo-datacompra">Data da Compra</label>
+            <input type="date" name="dataCompra" id="campo-datacompra" class="form-control col-5" />
         </div>
     </div>
 
+
+    <div>
+        <div>
+            <button type="submit" class="btn btn-outline-success float-right">Salvar</button>
+        </div>
+    </div>
 </form>
-

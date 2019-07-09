@@ -10,25 +10,30 @@ namespace View.Controllers
 {
     public class CompraController : Controller
     {
-        private CompraRepository repositorio;
+        private CompraRepository repository;
+        private CartaoCreditoRepository cartaoRepository;
         public CompraController()
         {
-            repositorio = new CompraRepository();
+            repository = new CompraRepository();
+            cartaoRepository = new CartaoCreditoRepository();
         }
+
         // GET: Compra
         public ActionResult Index()
         {
-            List<Compra> compras = repositorio.ObterTodos();
+            List<Compra> compras = repository.ObterTodos();
             ViewBag.Compras = compras;
             return View();
         }
 
         public ActionResult Cadastro()
         {
-            CompraRepository compraRepository = new CompraRepository();
-            List<Compra> compras = compraRepository.ObterTodos();
-            ViewBag.Compras = compras;
+            List<CartaoCredito> cartoesCredito = cartaoRepository.ObterTodos();
+            ViewBag.Cartoes = cartoesCredito;            
+            
+
             return View();
+
         }
 
         public ActionResult Store(int idCartaoCredito, decimal valor, DateTime dataCompra)
@@ -37,37 +42,10 @@ namespace View.Controllers
             compra.IdCartao = idCartaoCredito;
             compra.Valor = valor;
             compra.DataCompra = dataCompra;
-            repositorio.Inserir(compra);
-            return RedirectToAction("Index");
-        }
 
-        public ActionResult Apagar(int id)
-        {
-            repositorio.Apagar(id);
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult Editar(int id)
-        {
-            Compra compra = repositorio.ObterPeloId(id);
-            ViewBag.Compra = compra;
-            CompraRepository compraRepository = new CompraRepository();
-            List<Compra> compras = compraRepository.ObterTodos();
-            ViewBag.Compra = compras;
-            return View();
-        }
-
-        public ActionResult Update(int id, int idCartaoCredito, decimal valor, DateTime dataCompra)
-        {
-            Compra compra = new Compra();
-            compra.Id = id;
-            compra.IdCartao = idCartaoCredito;
-            compra.Valor = valor;
-            compra.DataCompra = dataCompra;
-            repositorio.Alterar(compra);
+            repository.Inserir(compra);
 
             return RedirectToAction("Index");
-
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Repository.Repositories
         public Categoria ObterPeloId(int id)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = @"SELECT * FROM categorias";
+            comando.CommandText = @"SELECT * FROM categorias WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
 
             DataTable tabela = new DataTable();
@@ -89,12 +89,9 @@ namespace Repository.Repositories
             comando.CommandText = @"SELECT * FROM categorias";
 
             List<Categoria> categorias = new List<Categoria>();
-
+            
             DataTable tabela = new DataTable();
-
             tabela.Load(comando.ExecuteReader());
-            comando.Connection.Close();
-
             for (int i = 0; i < tabela.Rows.Count; i++)
             {
                 DataRow linha = tabela.Rows[i];

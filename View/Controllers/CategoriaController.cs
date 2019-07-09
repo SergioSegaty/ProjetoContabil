@@ -48,10 +48,8 @@ namespace View.Controllers
         public ActionResult Editar(int id)
         {
             Categoria categoria = repositorio.ObterPeloId(id);
-            ViewBag.Categoria = categoria;
-            CategoriaRepository categoriaRepository = new CategoriaRepository();
-            List<Categoria> categorias = categoriaRepository.ObterTodos();
-            ViewBag.Categorias = categorias;
+            ViewBag.Categoria = categoria;          
+            
             return View();
         }
 
