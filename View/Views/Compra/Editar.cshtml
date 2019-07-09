@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h3>Editar</h3>
+
+<fomr uiactions="@Url.Action("Update")" method="POST">
+    <input type="hidden" name="id" value="@ViewBag.Compra.Id" />
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="campo-cartaoCredito">Cartão de Crédito</label>
+                <input type="text" name="cartaoCredito" class="form-control" id="campo-cartaoCredito" value="@ViewBag.Compra.CartaoCredito" />
+
+                <label for="campo-valor">Valor da Compra</label>
+                <input type="text" name="valor" class="form-control" id="campo-valor" value="@ViewBag.Compra.Valor" />
+
+                <label for="campo-dataCompra">Data da Compra</label>
+                <input type="text" name="dataCompra" class="form-control" id="campo-dataCompra" value="@ViewBag.Compra.DataCompra" />
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-success float-right">
+                <i class="fas fa-save"></i> Salvar
+            </button>
+        </div>
+    </div>
+
+
+</fomr>
+

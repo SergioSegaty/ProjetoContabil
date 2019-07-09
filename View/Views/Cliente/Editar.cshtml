@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h3>Editar Clientes</h3>
+
+
+<form action="@Url.Action("Update")" method="post" class="form-group">
+
+    <div class="row">
+        <div class="col-12">
+            <label for="campo-nome">Nome</label>
+            <input type="text" id="campo-nome" value="@ViewBag.Cliente.Nome" class="form-control" name="nome"/>
+            <input type="hidden" name="id" value="@ViewBag.Cliente.Id" />
+
+            <label for="campo-contabilidade">Contabilidade</label>
+            <select id="campo-contabilidade" name="IdContabilidade" class="form-control">
+                @foreach (Model.Contabilidade contabilidade in ViewBag.Contabilidades)
+                {
+                    if (ViewBag.Cliente.IdContabilidade == contabilidade.Id)
+                    {
+
+                        <option value="@contabilidade.Id" selected="selected">@contabilidade.Nome</option>
+                    }
+                    else
+                    {
+                        <option value="@contabilidade.Id">@contabilidade.Nome</option>
+
+                    }
+
+                }
+            </select>
+
+            <label for="campo-cpf">CPF</label>
+            <input type="text" id="campo-cpf" name="cpf" value="@ViewBag.Cliente.Cpf" class="form-control" />
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-outline-success float-right m-2" type="submit">Salvar</button>
+        </div>
+    </div>
+
+</form>
+
+
+
