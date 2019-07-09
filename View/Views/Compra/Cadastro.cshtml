@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Cadastro";
+}
+
+<h3 class="text-center m-3">Nova Compra</h3>
+
+
+<form action="@Url.Action("Store")" method="post">
+
+
+    <div class="row">
+        <div class="col-12">
+            <label for="campo-valor">Valor da Compra</label>
+            <input type="text" id="campo-valor" name="valor" class="form-control" />
+
+            <label>Cartão de Crédito</label>
+            <select class="form-control" name="idCartaoCredito">
+                <option selected="selected" disabled="disabled">Seleciona uma Opção</option>
+                @foreach (Model.CartaoCredito cartaoCredito in ViewBag.Cartoes)
+                {
+                   <option value="@cartaoCredito.Id">@cartaoCredito.Numero</option>
+                }
+            </select>
+
+            <label for="campo-datacompra">Data da Compra</label>
+            <input type="date" name="dataCompra" id="campo-datacompra" class="form-control col-5" />
+        </div>
+    </div>
+
+
+    <div>
+        <div>
+            <button type="submit" class="btn btn-outline-success float-right">Salvar</button>
+        </div>
+    </div>
+</form>

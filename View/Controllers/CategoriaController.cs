@@ -33,10 +33,9 @@ namespace View.Controllers
 
         }
 
-        public ActionResult Store(int idCategoria, string nome)
+        public ActionResult Store(string nome)
         {
             Categoria categoria = new Categoria();
-            categoria.Id = idCategoria;
             categoria.Nome = nome;
             repositorio.Inserir(categoria);
             return RedirectToAction("Index");
@@ -51,14 +50,12 @@ namespace View.Controllers
         public ActionResult Editar(int id)
         {
             Categoria categoria = repositorio.ObterPeloId(id);
-            ViewBag.Categoria = categoria;
-            CategoriaRepository categoriaRepository = new CategoriaRepository();
-            List<Categoria> categorias = categoriaRepository.ObterTodos();
-            ViewBag.Categorias = categorias;
+            ViewBag.Categoria = categoria;          
+            
             return View();
         }
 
-        public ActionResult Update(int id, string nome, int idCategoria)
+        public ActionResult Update(int id, string nome)
         {
             Categoria categoria = new Categoria();
             categoria.Id = id;
