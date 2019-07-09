@@ -34,14 +34,14 @@
             {
                 <tbody>
                     <tr>
-                        <th>@usuario.Id</th>
-                        <th>@usuario.Login</th>
-                        <th>@usuario.DataNascimento</th>
-                        <th>@usuario.Contabilidade.Nome</th>
-                        <th>
+                        <td>@usuario.Id</td>
+                        <td>@usuario.Login</td>
+                        <td>@usuario.DataNascimento</td>
+                        <td>@usuario.Contabilidade.Nome</td>
+                        <td>
                             <a href="@Url.Action("Editar"), new { id = usuario.Id }" class="btn btn-outline-primary"><i class="fa fa-pen"></i> Editar</a>
                             <a href="@Url.Action("Deletar"), new { id = usuario.Id }" class="btn btn-outline-danger"><i class="fas fa-save"></i> Deletar</a>
-                        </th>
+                        </td>
                     </tr>
                 </tbody>
             }

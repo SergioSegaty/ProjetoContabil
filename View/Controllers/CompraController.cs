@@ -47,5 +47,36 @@ namespace View.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult Editar(int id)
+        {
+            Compra compra = repository.ObterPeloId(id);
+
+            ViewBag.Compra = compra;
+
+            return View();
+        }
+
+        public ActionResult Update (int id, int idCartaoCredito, decimal valor, DateTime dataCompra)
+        {
+            Compra compra = new Compra();
+
+            compra.Id = id;
+            compra.IdCartao = idCartaoCredito;
+            compra.Valor = valor;
+            compra.DataCompra = dataCompra;
+
+            repository.Alterar(compra);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Apagar(int id)
+        {
+            repository.Apagar(id);
+
+            return RedirectToAction("Index");
+
+        }
     }
 }

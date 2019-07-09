@@ -91,10 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Database.mdf" />
-    <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
@@ -192,6 +188,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\ContabilidadeController.cs" />
+    <Compile Include="Controllers\ContaPagarController.cs" />
     <Compile Include="Controllers\ContaReceberController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -234,6 +231,7 @@
     <Content Include="Views\CartaoCredito\Index.cshtml" />
     <Content Include="Views\CartaoCredito\Editar.cshtml" />
     <Content Include="Views\ContaReceber\Index.cshtml" />
+    <Content Include="Views\ContaPagar\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
