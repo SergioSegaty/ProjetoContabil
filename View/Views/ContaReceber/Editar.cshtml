@@ -3,5 +3,33 @@
     ViewBag.Title = "Editar";
 }
 
-<h2>Editar</h2>
+<h3 class="text-center m-1">Editar</h3>
 
+<form action="@Url.Action("Update")" method="post" class="form-group">
+
+    <div class="row">
+        <div class="col-12">
+
+            <label for="campo-nome"></label>
+            <input type="text" name="nome" id="campo-nome" class="form-control"
+                   value="@ViewBag.ContaReceber.Nome" />
+
+            <label for="campo-data-pagamento"></label>
+            <input type="date" name="dataPagamento" id="campo-data-pagamento" class="form-control"
+                   value="@ViewBag.ContaReceber.DataPagamento" />
+
+            <label for="campo-valor"></label>
+            <input type="text" name="valor" id="campo-valor" class="form-control"
+                   value="@ViewBag.ContaReceber.Valor" />
+
+            <input typef="hidden" name="id" value="@ViewBag.ContaReceber.Id" />
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-outline-success float-right m-2" type="submit">Salvar</button>
+        </div>
+    </div>
+</form>
