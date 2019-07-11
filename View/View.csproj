@@ -188,6 +188,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\ContabilidadeController.cs" />
+    <Compile Include="Controllers\ContaPagarController.cs" />
     <Compile Include="Controllers\ContaReceberController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
