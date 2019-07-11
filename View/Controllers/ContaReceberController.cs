@@ -32,18 +32,23 @@ namespace View.Controllers
             ViewBag.ContaReceber = contaReceberRepository.ObterTodos();
 
             ClienteRepository clienteRepository = new ClienteRepository();
-            ViewBag.Cliente = clienteRepository.ObterTodos();
+            ViewBag.Clientes = clienteRepository.ObterTodos();
 
             CategoriaRepository categoriaRepository = new CategoriaRepository();
-            ViewBag.Categoria = categoriaRepository.ObterTodos();
+            ViewBag.Categorias = categoriaRepository.ObterTodos();
 
             return View();
         }
 
-        public ActionResult Store (string nome)
+        public ActionResult Store (string nome, int IdCliente, int IdCategoria, DateTime dataPagamento, decimal valor)
         {
             ContaReceber contaReceber = new ContaReceber();
             contaReceber.Nome = nome;
+            contaReceber.IdCliente = IdCliente;
+            contaReceber.IdCategoria = IdCategoria;
+            contaReceber.DataPagamento = dataPagamento;
+            contaReceber.Valor = valor;
+
             repositorio.Inserir(contaReceber);
             return RedirectToAction("Index");
         }
@@ -57,22 +62,27 @@ namespace View.Controllers
         public ActionResult Editar(int id)
         {
             ContaReceber contaReceber = repositorio.ObterPeloId(id);
+            
             ViewBag.ContaReceber = contaReceber;
 
             ClienteRepository clienteRepository = new ClienteRepository();
-            ViewBag.Cliente = clienteRepository.ObterTodos();
+            ViewBag.Clientes = clienteRepository.ObterTodos();
 
             CategoriaRepository categoriaRepository = new CategoriaRepository();
-            ViewBag.Categoria = categoriaRepository.ObterTodos();
+            ViewBag.Categorias = categoriaRepository.ObterTodos();
 
             return View();
         }
 
-        public ActionResult Update(int id, string nome)
+        public ActionResult Update(int id, string nome, int IdCliente, int IdCategoria, DateTime dataPagamento, decimal valor)
         {
             ContaReceber contaReceber = repositorio.ObterPeloId(id);
             contaReceber.Id = id;
             contaReceber.Nome = nome;
+            contaReceber.IdCliente = IdCliente;
+            contaReceber.IdCategoria = IdCategoria;
+            contaReceber.DataPagamento = dataPagamento;
+            contaReceber.Valor = valor;
             repositorio.Alterar(contaReceber);
 
             return RedirectToAction("Index");

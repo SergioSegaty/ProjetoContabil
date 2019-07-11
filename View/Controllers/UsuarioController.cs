@@ -73,5 +73,12 @@ namespace View.Controllers
             repository.Alterar(usuario);
             return RedirectToAction("Index");
         }
+
+        public ActionResult Apagar(int id)
+        {
+            repository.Apagar(id);
+
+            return View();
+        }
     }
 }

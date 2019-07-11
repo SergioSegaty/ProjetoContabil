@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-<h3 class="text-center m-2">Tabela de Usuarios</h3>
+<h3 class="text-center mt-2 mb-2">Tabela de Usuarios</h3>
 
 
 
@@ -36,11 +36,11 @@
                     <tr>
                         <td>@usuario.Id</td>
                         <td>@usuario.Login</td>
-                        <td>@usuario.DataNascimento</td>
+                        <td>@usuario.DataNascimento.ToShortDateString()</td>
                         <td>@usuario.Contabilidade.Nome</td>
                         <td>
-                            <a href="@Url.Action("Editar"), new { id = usuario.Id }" class="btn btn-outline-primary"><i class="fa fa-pen"></i> Editar</a>
-                            <a href="@Url.Action("Deletar"), new { id = usuario.Id }" class="btn btn-outline-danger"><i class="fas fa-save"></i> Deletar</a>
+                            <a href="@Url.Action("Editar", new { id = usuario.Id })" class="btn btn-outline-primary"><i class="fa fa-pen"></i> Editar</a>
+                            <a href="@Url.Action("Apagar", new { id = usuario.Id })" class="btn btn-outline-danger"><i class="fas fa-save"></i> Deletar</a>
                         </td>
                     </tr>
                 </tbody>

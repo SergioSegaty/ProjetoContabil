@@ -131,7 +131,7 @@ namespace Repository.Repositories
                 contaReceber.Nome = linha["nome"].ToString();
                 contaReceber.Id = Convert.ToInt32(linha["id"]);
                 contaReceber.Valor = Convert.ToDecimal(linha["valor"]);
-                contaReceber.DataPagamento = Convert.ToDateTime(linha["valor"]);
+                contaReceber.DataPagamento = Convert.ToDateTime(linha["data_pagamento"]);
                 contaReceber.IdCliente = Convert.ToInt32(linha["IdCliente"]);
                 contaReceber.IdCategoria = Convert.ToInt32(linha["IdCategoria"]);
 

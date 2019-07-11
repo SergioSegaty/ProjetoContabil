@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h3 class="text-center">Editar Conta a Pagar</h3>
+
+<form action="@Url.Action("Update")" method="post" class="form-group">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <input type="hidden" name="id" value="@ViewBag.ContaPagar.Id" />
+                <label for="campo-cliente">Nome do Cliente</label>
+                <select id="campo-cliente" name="IdCliente" class="form-control">
+
+
+                    @foreach (Model.Cliente cliente in ViewBag.Clientes)
+                    {
+                        if (cliente.Id == ViewBag.ContaPagar.IdCliente)
+                        {
+
+                            <option value="@cliente.Id" selected="selected">@cliente.Nome</option>
+                        }
+                        else
+                        {
+
+                            <option value="@cliente.Id">@cliente.Nome</option>
+                        }
+
+                    }
+
+
+
+                </select>
+
+                <label for="campo-categoria">Categoria</label>
+                <select id="campo-categoria" name="IdCategoria" class="form-control">
+
+
+
+                    @foreach (Model.Categoria categoria in ViewBag.Categorias)
+                    {
+
+                        if (categoria.Id == ViewBag.ContaPagar.IdCategoria)
+                        {
+
+                            <option selected="selected" value="@categoria.Id">@categoria.Nome</option>
+                        }
+                        <option value="@categoria.Id">@categoria.Nome</option>
+                    }
+                </select>
+
+                <label for="campo-nome">Titulo</label>
+                <input type="text" name="nome" class="form-control" value="@ViewBag.ContaPagar.Nome" />
+
+                <label for="campo-data">Data de Compra</label>
+                <input type="date" name="dataPagamento" class="form-control" id="campo-data" value="@ViewBag.ContaPagar.DataPagamento.ToString("yyyy-MM-dd")" />
+
+                <label for="campo-data">Prazo final</label>
+                <input type="date" name="dataVencimento" class="form-control" id="campo-data" value="@ViewBag.ContaPagar.DataVencimento.ToString("yyyy-MM-dd")" />
+
+                <label for="campo-valor">Valor</label>
+                <input type="text" name="valor" class="form-control" value="@ViewBag.ContaPagar.Valor" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-outline-success float-right">Salvar</button>
+        </div>
+    </div>
+</form>
+
+

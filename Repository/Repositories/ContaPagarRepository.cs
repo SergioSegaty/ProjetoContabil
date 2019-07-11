@@ -16,7 +16,15 @@ namespace Repository.Repositories
         public bool Alterar(ContaPagar contaPagar)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = "UPDATE ContaPagar SET id_cliente = @ID_CLIENTE WHERE id = @ID";
+            comando.CommandText = @"UPDATE contas_pagar SET 
+            id_cliente = @ID_CLIENTE,
+            id_categoria = @ID_CATEGORIA,
+            nome = @NOME,
+            data_vencimento = @DATA_VENCIMENTO,
+            data_pagamento = @DATA_PAGAMENTO,
+            valor = @VALOR
+            WHERE id = @ID";
+
             comando.Parameters.AddWithValue("@ID_CLIENTE", contaPagar.IdCliente);
             comando.Parameters.AddWithValue("@ID_CATEGORIA", contaPagar.IdCategoria);
             comando.Parameters.AddWithValue("@NOME", contaPagar.Nome);
@@ -24,6 +32,7 @@ namespace Repository.Repositories
             comando.Parameters.AddWithValue("@DATA_PAGAMENTO", contaPagar.DataPagamento);
             comando.Parameters.AddWithValue("@VALOR", contaPagar.Valor);
             comando.Parameters.AddWithValue("@ID", contaPagar.Id);
+
             int quantidade = comando.ExecuteNonQuery();
             comando.Connection.Close();
             return quantidade == 1;
@@ -42,8 +51,21 @@ namespace Repository.Repositories
         public int Inserir(ContaPagar contaPagar)
         {
             SqlCommand comando = Conexao.AbrirConexao();
-            comando.CommandText = "INSERT INT contas_pagar (id_cliente) OUTPUT INSERTED.ID VALUES (@ID_CLIENTE)";
+            comando.CommandText = @"INSERT INTO contas_pagar 
+            (nome, id_cliente, id_categoria, valor, data_pagamento, data_vencimento)
+            OUTPUT INSERTED.ID
+            VALUES
+            (@NOME, @ID_CLIENTE, @ID_CATEGORIA, @VALOR, @DATA_PAGAMENTO, @DATA_VENCIMENTO)";
+
+            comando.Parameters.AddWithValue("@NOME", contaPagar.Nome);
             comando.Parameters.AddWithValue("@ID_CLIENTE", contaPagar.IdCliente);
+            comando.Parameters.AddWithValue("@ID_CATEGORIA", contaPagar.IdCategoria);
+            comando.Parameters.AddWithValue("@VALOR", contaPagar.Valor);
+            comando.Parameters.AddWithValue("@DATA_PAGAMENTO", contaPagar.DataPagamento);
+            comando.Parameters.AddWithValue("@DATA_VENCIMENTO", contaPagar.DataVencimento);
+
+
+
             int id = Convert.ToInt32(comando.ExecuteScalar());
             comando.Connection.Close();
             return id;

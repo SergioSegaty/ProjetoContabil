@@ -19,7 +19,7 @@
 
             <label for="campo-data-nascimento">Data de Nascimento</label>
             <input type="date" name="dataNascimento" id="campo-data-nascimento" class="form-control"
-                   value="@ViewBag.Usuario.DataNascimento" />
+                   value="@ViewBag.Usuario.DataNascimento.ToString("yyyy-MM-dd")" />
 
             <input type="hidden" name="id" value="@ViewBag.Usuario.Id" />
 

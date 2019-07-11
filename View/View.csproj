@@ -233,6 +233,9 @@
     <Content Include="Views\ContaReceber\Index.cshtml" />
     <Content Include="Views\ContaReceber\Cadastro.cshtml" />
     <Content Include="Views\ContaReceber\Editar.cshtml" />
+    <Content Include="Views\ContaPagar\Index.cshtml" />
+    <Content Include="Views\ContaPagar\Cadastro.cshtml" />
+    <Content Include="Views\ContaPagar\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
